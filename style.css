@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Indie Flower', cursive;
+}
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 180px);
+    grid-template-rows: repeat(3, 180px);
+    gap: 0;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+section button {
+    height: 180px;
+    width: 180px;
+    border-radius: 10%;
+}
+
+.reset-button {
+    height: 4rem;
+    width: 10rem;
+    border-radius: 5%;
+    font-size: 2rem;
+}
