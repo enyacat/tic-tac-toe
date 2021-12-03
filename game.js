@@ -94,31 +94,27 @@ function handleClick(event) {
 // test if element contains class
 // element.classList.contains(class);
 
-
+function test(arr) {
+    if (arr == ['X', 'X', 'X']) {
+        console.log('yes')
+    }
+}
 
 function winLose(arr) {
-    var winArrayX = ['X', 'X', 'X']
-    var winArrayO = ['O', 'O', 'O']
-
-    if (index == 8 && result == "") {
+    if (index == 9 && result != "O wins" && result != "X wins") {
         return "DRAW";
     }
-    if (arr == winArrayO) {
+    if (arr.join("") == "OOO") {
         allButtons.forEach(function (button) {
             button.disabled = true;
         });
         return ("O wins")
-    } else if (arr == winArrayX) {
+    } else if (arr.join("") == "XXX") {
         allButtons.forEach(function (button) {
             button.disabled = true;
         });
-        console.log("X wins");
         return ("X wins")
     }
-    // else {
-    //     return ("")
-    // }
-
 }
 
 function gameOver() {
