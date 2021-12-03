@@ -110,6 +110,7 @@ function handleReset() {
         button.textContent = "";
         button.disabled = false;
         button.classList.remove('no-shadow');
+        button.classList.toggle("shadow");
     })
     result = "";
     arrayColumnOne = [];
