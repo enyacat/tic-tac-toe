@@ -43,8 +43,8 @@ function handleClick(event) {
     var userClicked = event.target;
     userClicked.disabled = true;
     userClicked.classList.toggle("no-shadow");
-    // when clicked, log the textContent into an array
 
+    // when clicked, log the textContent into an array
     if (index < choices.length) {
         userClicked.textContent = choices[index];
         index++;
@@ -52,82 +52,57 @@ function handleClick(event) {
 
     if (userClicked.classList.contains("row1")) {
         arrayRowOne.push(userClicked.textContent);
-        result = winLose(arrayRowOne);
+        result = judge(arrayRowOne);
     } else if (userClicked.classList.contains("row2")) {
         arrayRowTwo.push(userClicked.textContent);
-        result = winLose(arrayRowTwo);
+        result = judge(arrayRowTwo);
     } else {
         arrayRowThree.push(userClicked.textContent);
-        result = winLose(arrayRowThree);
+        result = judge(arrayRowThree);
     }
+
+    displayResult();
 
     if (userClicked.classList.contains("column1")) {
         arrayColumnOne.push(userClicked.textContent);
-        result = winLose(arrayColumnOne);
+        result = judge(arrayColumnOne);
     } else if (userClicked.classList.contains("column2")) {
         arrayColumnTwo.push(userClicked.textContent);
-        result = winLose(arrayColumnTwo);
+        result = judge(arrayColumnTwo);
     } else {
         arrayColumnThree.push(userClicked.textContent);
-        result = winLose(arrayColumnThree);
+        result = judge(arrayColumnThree);
     }
 
+    displayResult();
+}
+
+function judge(arr) {
+    if (arr.join("") == "OOO") {
+        return ("O wins")
+    } else if (arr.join("") == "XXX") {
+        return ("X wins")
+    }
     if (buttonFive.textContent != "") {
         if (buttonOne.textContent == buttonFive.textContent && buttonOne.textContent == buttonNine.textContent) {
-            result = `${buttonFive.textContent} wins`;
-            gameOver();
+            return `${buttonFive.textContent} wins`;
         } else if (buttonThree.textContent == buttonFive.textContent && buttonFive.textContent == buttonSeven.textContent) {
-            result = `${buttonFive.textContent} wins`;
-            gameOver();
+            return `${buttonFive.textContent} wins`;
         }
     }
-    if (result != "") {
-        // gameOver();
-    }
-
-    spanResult.textContent = result;
-}
-
-
-
-
-// test if element contains class
-// element.classList.contains(class);
-
-function test(arr) {
-    if (arr == ['X', 'X', 'X']) {
-        console.log('yes')
-    }
-}
-
-function winLose(arr) {
     if (index == 9 && result != "O wins" && result != "X wins") {
         return "DRAW";
     }
-    if (arr.join("") == "OOO") {
-        allButtons.forEach(function (button) {
-            button.disabled = true;
-        });
-        return ("O wins")
-    } else if (arr.join("") == "XXX") {
-        allButtons.forEach(function (button) {
-            button.disabled = true;
-        });
-        return ("X wins")
-    }
 }
 
-function gameOver() {
-    allButtons.forEach(function (button) {
-        button.disabled = true;
-        button.classList.remove('shadow');
-    });
-    arrayColumnOne = [];
-    arrayColumnTwo = [];
-    arrayColumnThree = [];
-    arrayRowOne = [];
-    arrayRowTwo = [];
-    arrayRowThree = [];
+function displayResult() {
+    if (result == "O wins" || result == "X wins" || result == "DRAW") {
+        spanResult.textContent = result;
+        allButtons.forEach(function (button) {
+            button.disabled = true;
+            button.classList.remove('shadow');
+        });
+    }
 }
 
 function handleReset() {
