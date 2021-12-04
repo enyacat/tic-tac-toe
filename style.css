@@ -26,7 +26,10 @@ section button {
     width: 180px;
     border-radius: 10%;
     font-size: 4rem;
+    color: transparent;
+    background-color:aliceblue;
 }
+
 .shadow {
     box-shadow: 5px 10px #888888;
 }

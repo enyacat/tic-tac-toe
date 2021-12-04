@@ -20,6 +20,7 @@ var arrayColumnThree = []
 var arrayRowOne = []
 var arrayRowTwo = []
 var arrayRowThree = []
+var title = document.querySelector("h1")
 var spanResult = document.querySelector(".result")
 var choices = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 var index = 0
@@ -49,6 +50,18 @@ function handleClick(event) {
         userClicked.textContent = choices[index];
         index++;
     }
+
+    // add image
+    if (userClicked.textContent == "X") {
+        userClicked.style.backgroundImage = "url('/images/Doge.png')";
+        userClicked.style.backgroundSize = "180px 180px";
+        title.textContent = "Tickle Dog Toe";
+    } else if (userClicked.textContent == "O") {
+        userClicked.style.backgroundImage = "url('/images/guapi.jpeg')";
+        userClicked.style.backgroundSize = "180px 180px";
+        title.textContent = "Tickle Cat Toe";
+    }
+
 
     if (userClicked.classList.contains("row1")) {
         arrayRowOne.push(userClicked.textContent);
@@ -97,7 +110,13 @@ function judge(arr) {
 
 function displayResult() {
     if (result == "O wins" || result == "X wins" || result == "DRAW") {
-        spanResult.textContent = result;
+        if (result == "O wins") {
+            spanResult.textContent = "Cat wins!"
+        } else if (result == "X wins") {
+            spanResult.textContent = "Dog wins!"
+        } else {
+            spanResult.textContent = result;
+        }
         allButtons.forEach(function (button) {
             button.disabled = true;
             button.classList.remove('shadow');
@@ -111,7 +130,9 @@ function handleReset() {
         button.disabled = false;
         button.classList.remove('no-shadow');
         button.classList.toggle("shadow");
+        button.style.backgroundImage = "";
     })
+    title.textContent = "Tic Tac Toe";
     result = "";
     arrayColumnOne = [];
     arrayColumnTwo = [];
@@ -122,6 +143,7 @@ function handleReset() {
     index = 0;
     spanResult.textContent = "";
 }
+
 
 // if every button has content (was clicked), and no line of three formed, display DRAW.
 // MODE
