@@ -53,13 +53,13 @@ function handleClick(event) {
 
     // add image
     if (userClicked.textContent == "X") {
-        userClicked.style.backgroundImage = "url('/images/Doge.png')";
+        userClicked.style.backgroundImage = "url('./images/Doge.png')";
         userClicked.style.backgroundSize = "180px 180px";
-        title.textContent = "Tickle Dog Toe";
+        title.textContent = "Tic Dog Toe";
     } else if (userClicked.textContent == "O") {
-        userClicked.style.backgroundImage = "url('/images/guapi.jpeg')";
+        userClicked.style.backgroundImage = "url('./images/guapi.jpeg')";
         userClicked.style.backgroundSize = "180px 180px";
-        title.textContent = "Tickle Cat Toe";
+        title.textContent = "Tic Cat Toe";
     }
 
 
